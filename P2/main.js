@@ -72,7 +72,7 @@ d3.csv("coffee_data.csv", function(error, data) {
               "translate(" + (charArea.width/2 + 60) + " ," + 
                              (100) + ")")
         .style("text-anchor", "middle")
-        .text("aaCoffee Sales by Product (USD)");
+        .text("Coffee Sales by Product (USD)");
 
     var xAxis=svg.append("g")
         .classed("xAxis", true)
@@ -100,16 +100,26 @@ d3.csv("coffee_data.csv", function(error, data) {
         .style("text-anchor", "middle")
         .text("Product");
 
-    //var formatAxis = d3.format(".0k");
-    var yAxisFn=d3.axisLeft(yScale);
+
+    var yAxisFn=d3.axisLeft(yScale).ticks(5).tickFormat(function (d) {
+        if ((d / 1000) >= 1) {
+          d = d / 1000 + "K";
+        }
+        return d;
+      });
     var yAxis=svg.append("g")
         .classed("yAxis", true)
-        .attr('transform', 'translate('+padding.left+','+padding.top+')')
-        ;
+        .attr('transform', 'translate('+padding.left+','+padding.top+')');
+        
+        
     yAxisFn(yAxis);
 
-
-    var y2AxisFn=d3.axisLeft(y2Scale);
+    var y2AxisFn=d3.axisLeft(y2Scale).ticks(5).tickFormat(function (d) {
+        if ((d / 1000) >= 1) {
+          d = d / 1000 + "K";
+        }
+        return d;
+      });
     var y2Axis=svg2.append("g")
         .classed("y2Axis", true)
         .attr('transform', 'translate('+padding.left+','+padding.top+')');
@@ -130,7 +140,7 @@ d3.csv("coffee_data.csv", function(error, data) {
     .attr("x",0 - (charArea.height / 2) - 150)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("aCoffee Sales (USD)"); 
+    .text("Coffee Sales (USD)"); 
 
     var rectGrp=svg.append("g")
         .attr('transform', 'translate('+padding.left+','+padding.top+')'
