@@ -1,0 +1,21 @@
+h1 {
+    font-size: "10pt";
+}
+
+.container {
+  float: left;
+}
+
+svg {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+svg2 {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
