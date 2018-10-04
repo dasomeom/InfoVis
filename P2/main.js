@@ -72,7 +72,7 @@ d3.csv("coffee_data.csv", function(error, data) {
               "translate(" + (charArea.width/2 + 60) + " ," + 
                              (100) + ")")
         .style("text-anchor", "middle")
-        .text("Coffee Sales by Product (USD)");
+        .text("aaCoffee Sales by Product (USD)");
 
     var xAxis=svg.append("g")
         .classed("xAxis", true)
