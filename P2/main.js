@@ -100,11 +100,12 @@ d3.csv("coffee_data.csv", function(error, data) {
         .style("text-anchor", "middle")
         .text("Product");
 
-
+    //var formatAxis = d3.format(".0k");
     var yAxisFn=d3.axisLeft(yScale);
     var yAxis=svg.append("g")
         .classed("yAxis", true)
-        .attr('transform', 'translate('+padding.left+','+padding.top+')');
+        .attr('transform', 'translate('+padding.left+','+padding.top+')')
+        ;
     yAxisFn(yAxis);
 
 
@@ -129,7 +130,7 @@ d3.csv("coffee_data.csv", function(error, data) {
     .attr("x",0 - (charArea.height / 2) - 150)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("Coffee Sales (USD)"); 
+    .text("aCoffee Sales (USD)"); 
 
     var rectGrp=svg.append("g")
         .attr('transform', 'translate('+padding.left+','+padding.top+')'
