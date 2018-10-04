@@ -5,6 +5,26 @@
 // even though it is defined on line 8.
 window.onload = start;
 
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
 // This is where all of our javascript code resides. This method
 // is called by "window" when the document (everything you see on
 // the screen) has finished loading.
@@ -73,7 +93,7 @@ function start() {
         .on('click', function() {
             bars.selectAll('.bar')
                 .filter(function(d) {
-                    return d.frequency > 0.05;
+                    return d.frequency < 0.05;
                 })
                 .transition()
                 .duration(function(d) {
@@ -84,10 +104,46 @@ function start() {
                 })
                 .style('fill', 'red')
                 .attr('width', function(d) {
-                    return xScale(d.frequency) / 2;
+                    return 0;
+                });
+            bars.selectAll('.bar')
+                .filter(function(d) {
+                    return d.frequency >= 0.05;
+                })
+                .transition()
+                .duration(function(d) {
+                    return Math.random() * 1000;
+                })
+                .delay(function(d) {
+                    return d.frequency * 8000
+                })
+                .style('fill', 'red')
+                .attr('width', function(d) {
+                    return xScale(d.frequency);
                 });
         });
-
+    // Reset Filter 
+    d3.select(graph)
+        .append('p')
+        .append('button')
+        .text('Reset Filter')
+        .on('click', function() {
+            bars.selectAll('.bar')
+                .filter(function(d) {
+                    return d.frequency > 0;
+                })
+                .transition()
+                .duration(function(d) {
+                    return Math.random() * 1000;
+                })
+                .delay(function(d) {
+                    return d.frequency * 8000
+                })
+                .style('fill', 'steelblue')
+                .attr('width', function(d) {
+                    return xScale(d.frequency);
+                });
+        });
     // D3 will grab all the data from "data.csv" and make it available
     // to us in a callback function. It follows the form:
     // 
