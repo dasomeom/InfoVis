@@ -76,6 +76,12 @@ function start() {
     // That means the labels are on the left, and tick marks on the right.
     var yAxis = d3.svg.axis().scale(yScale).orient('left');
 
+
+    
+    //var aaa = d3.select("#nValue").on("input", function() {
+    //    update(+this.value);
+    //  });
+    
     // Add a button below the graph. Clicking on this button will
     // run a filter on the data and use an animation in the process.
     // 
@@ -93,7 +99,7 @@ function start() {
         .on('click', function() {
             bars.selectAll('.bar')
                 .filter(function(d) {
-                    return d.frequency < 0.05;
+                    return d.frequency < d3.select("#nValue").node().value;
                 })
                 .transition()
                 .duration(function(d) {
@@ -108,7 +114,7 @@ function start() {
                 });
             bars.selectAll('.bar')
                 .filter(function(d) {
-                    return d.frequency >= 0.05;
+                    return d.frequency >= d3.select("#nValue").node().value;
                 })
                 .transition()
                 .duration(function(d) {
@@ -117,7 +123,7 @@ function start() {
                 .delay(function(d) {
                     return d.frequency * 8000
                 })
-                .style('fill', 'red')
+                .style('fill', d3.select("#dropdown").node().value)
                 .attr('width', function(d) {
                     return xScale(d.frequency);
                 });

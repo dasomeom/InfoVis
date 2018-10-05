@@ -12,19 +12,15 @@
 </head>
 <body>
 	<h1>Letter Frequency</h1>
-	<svg>
-		
-	</svg>
 	<div id="graph"></div>
-	<div class="dropdown">
-		<button onclick="myFunction()" class="dropbtn">Dropdown</button>
-		<div id="myDropdown" class="dropdown-content">
-		  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-		  <a href="#YYY">Yellow</a>
-		  <a href="#GGG">Green</a>
-		  <a href="#PPP">Pink</a>
-		</div>
-	  </div>
-	  <form id = "form1"> Cutoff: <input name = "Data" type="number"></form>
+	<select id="dropdown">
+		<option value="red">Red</option>
+		<option value="green">Green</option>
+		<option value="yellow">Yellow</option>
+		<option value="purple">Purple</option>
+	</select>
+	<div> </div>
+	Cutoff:
+	<input type="number" min="0" max="1" step=".00001" value="0" id="nValue">
 </body>
 </html>
