@@ -167,7 +167,7 @@
 		    });
 		}
 
-        d3.selectAll('circle.selected').classed( "selected", false);
+
         //data display
 		var temp1= chart1.selectAll("circle")
 		   .filter(function(d) { return d.i === d.j; }).append("text")
@@ -184,6 +184,12 @@
                chart2.selectAll("circle").classed("selected", false);
                chart2.selectAll("circle")
                    .filter(function(d) {
+                       if (d == csv[i]) {
+                           document.getElementById("satm").innerHTML = d.SATM;
+                           document.getElementById("satv").innerHTML = d.SATV;
+                           document.getElementById("act").innerHTML = d.ACT;
+                           document.getElementById("gpa").innerHTML = d.GPA;
+                       }
                        return d == csv[i];
                    }).classed("selected", true);
 		   });
@@ -240,13 +246,19 @@
                 chart2.selectAll("circle").classed("selected", false);
                 chart1.selectAll("circle")
                     .filter(function(d) {
+                        if (d == csv[i]) {
+                            document.getElementById("satm").innerHTML = d.SATM;
+                            document.getElementById("satv").innerHTML = d.SATV;
+                            document.getElementById("act").innerHTML = d.ACT;
+                            document.getElementById("gpa").innerHTML = d.GPA;
+                        }
                         return d == csv[i];
                     }).classed("selected", true);
 
             });
             
 	
-		   
+
 
 
 
